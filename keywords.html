@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"  >
+<head>
+  <!--<div class="row main" ui-view>-->
+  <!--</div>-->
+ 
+  <title>keywords</title>
+
+  
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular-route.min.js"></script>
+
+
+
+
+ 
+</head>
+<body >
+
+    <form  id= forms ng-app="scrapperApp" ng-controller="scrapperCtrl" >
+      <div >
+          <center> <button type="submit"  ng-click="scrapper()">Show keywords</button> </center>
+          
+        </div>
+      </div>
+      
+    </form>
+
+
+
+    <ul id="ct" ></ul>
+    <p id="demo"></p>
+
+
+
+
+    <script type="text/javascript">
+      
+      angular.module('scrapperApp',[]).controller('scrapperCtrl',function ($scope,$http,$window) {
+
+
+
+
+
+                            
+
+
+            $scope.scrapper = function(){
+
+              $http({
+                    method: 'post',
+                    url :"http://localhost:3000/scraper?kw=",
+                    params:{
+                        kw:$scope.keyword
+                    }
+
+                    
+
+                }).then(function(response){
+                    console.log(response);
+                    $scope.response = response.data;
+                    var ul = document.getElementById("ct");
+                    console.log(response.data);
+                    
+
+                    //document.getElementById('f').appendChild()
+                    
+                    var o;
+                    var numbers = response.data.split(",");
+                        console.log(numbers);
+
+                    for( var i = 0; i < numbers.length; i++ )
+                    { 
+                        //for(var j = 0;response.data[i];j++)
+                        //var o = response.data[i];
+                         o = numbers[i];
+                        var temp = o;
+                        var li = document.createElement("button");
+                        li.appendChild(document.createTextNode(o));
+                        ul.appendChild(li); 
+                        li.addEventListener("click", displayDate);
+
+                        function displayDate() {
+                            
+                            document.getElementById("demo").innerHTML = Date();
+                            var b = o;
+                            url = 'photos.html?name=' + encodeURIComponent(b);
+        
+                            document.location.href = url;
+        
+                            $window.open(url);
+                        }
+
+
+                        
+                   }
+
+                   
+
+
+                });
+
+                
+
+            };
+
+
+
+
+            
+
+      });
+
+    </script>
+
+</body>
+</html>

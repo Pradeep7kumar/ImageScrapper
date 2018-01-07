@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<img id = "0"    width="150px" height="200px">
+<img id = "1"    width="150px" height="200px">
+<img id = "2"    width="150px" height="200px">
+<img id = "3"    width="150px" height="200px">
+<img id = "4"    width="150px" height="200px">
+<img id = "5"    width="150px" height="200px">
+<img id = "6"    width="150px" height="200px">
+<img id = "7"    width="150px" height="200px">
+<img id = "8"    width="150px" height="200px">
+<img id = "9"    width="150px" height="200px">
+<img id = "10"    width="150px" height="200px">
+<img id = "11"    width="150px" height="200px">
+<img id = "12"    width="150px" height="200px">
+<img id = "13"    width="150px" height="200px">
+<img id = "14"    width="150px" height="200px">
+
+<script type="text/javascript" >
+
+
+var key;
+
+window.onload = function () {
+    var url = document.location.href;
+    console.log(url);
+        var params = url.split('?');
+        var data ; 
+    
+        data = params[1].split('=');
+        console.log(data[1]);
+        key = data[1];
+        console.log(key);
+
+        for(var i = 0; i<15;i++){
+
+            var url = "http://localhost:3000/images/"+key+"_"+i+".jpg";
+            document.getElementById(i).src = url;
+
+        }
+
+    }
+    
+</script>
+
+</body>
+</html>

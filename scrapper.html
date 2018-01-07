@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--<div class="row main" ui-view>-->
+  <!--</div>-->
+ 
+  <title>scrapper</title>
+
+  
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular-route.min.js"></script>
+
+
+
+
+ 
+</head>
+<body>
+
+    <form  ng-app="scrapperApp" ng-controller="scrapperCtrl" >
+      <div >
+        <label for="keyword">Keyword</label><input type="text"  id="keyword" placeholder="keyword"  ng-model="keyword">
+          <button type="submit"  ng-click="scrapper()">Scrap It </button>
+        </div>
+      </div>
+    </form>
+
+
+
+
+    <script type="text/javascript">
+      
+      angular.module('scrapperApp',[]).controller('scrapperCtrl',function ($scope,$http,$window) {
+
+            $scope.scrapper = function(){
+
+              $http({
+                    method: 'get',
+                    url :"http://localhost:3000/scraper?kw=",
+                    params:{
+                        kw:$scope.keyword
+                    }
+
+                }).then(function(response){
+                    console.log(response);
+                    $scope.response = response.data;
+                });
+
+                $window.open("keywords.html");
+
+            };
+
+
+      });
+
+
+
+    </script>
+
+</body>
+</html>
