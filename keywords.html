@@ -32,10 +32,7 @@
 
 
     <ul id="ct" ></ul>
-    <p id="demo"></p>
-
-
-
+    
 
     <script type="text/javascript">
       
@@ -43,21 +40,18 @@
 
 
 
-
-
-                            
-
-
             $scope.scrapper = function(){
 
               $http({
+			  
+			  
                     method: 'post',
                     url :"http://localhost:3000/scraper?kw=",
                     params:{
                         kw:$scope.keyword
                     }
 
-                    
+     
 
                 }).then(function(response){
                     console.log(response);
@@ -65,9 +59,7 @@
                     var ul = document.getElementById("ct");
                     console.log(response.data);
                     
-
-                    //document.getElementById('f').appendChild()
-                    
+                                       
                     var o;
                     var numbers = response.data.split(",");
                         console.log(numbers);
@@ -81,11 +73,10 @@
                         var li = document.createElement("button");
                         li.appendChild(document.createTextNode(o));
                         ul.appendChild(li); 
-                        li.addEventListener("click", displayDate);
+                        li.addEventListener("click", sendData);
 
-                        function displayDate() {
-                            
-                            document.getElementById("demo").innerHTML = Date();
+                        function sendData() {
+                           
                             var b = o;
                             url = 'photos.html?name=' + encodeURIComponent(b);
         
