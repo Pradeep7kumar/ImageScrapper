@@ -5,14 +5,14 @@ var cheerio = require("cheerio");
 var fs = require('fs');
 var url = require('url');
 var request = require('request');
-path = require('path')
+var path = require('path');
 const Jimp = require("jimp");
 var mongoose = require('mongoose');
 var mongodb = require('mongodb');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('scrapper.html');
+  res.send('scrapper.html');
 });
 
 //mongoose.connect('mongodb://127.0.0.1:27017/testing');
