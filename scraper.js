@@ -8,19 +8,25 @@ var request = require('request');
 path = require('path')
 const Jimp = require("jimp");
 var mongoose = require('mongoose');
+var mongodb = require('mongodb');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('scrapper.html');
 });
 
+//mongoose.connect('mongodb://127.0.0.1:27017/testing');
+mongoose.connect('mongodb://mgupta133:mohit110001@ds249737.mlab.com:49737/imgdbscraper');
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/testing');
 
+//'keyword': 
+  //      [{     
+    //         "keyword" : "rock"
+      //}] 
 
 mongoose.model('img').create(
-     {'user_id' : 'user'},function(err,status){
+     {'user_id' : 'mohit'},function(err,status){
      }
 );
 
@@ -46,7 +52,7 @@ router.get('/',function(req, res)
    console.log(txt[1]);
 
     
-    mongoose.model('img').update({'user_id':'user'},{
+    mongoose.model('img').update({'user_id':'mohit'},{
         '$push' : {
             'keyword' : txt[1]
         }
@@ -58,7 +64,7 @@ router.get('/',function(req, res)
     //res.json('ok');
 
     
-     mongoose.model('img').findOne({'user_id': 'user'},function(err,resource){
+     mongoose.model('img').findOne({'user_id': 'mohit'},function(err,resource){
 
         if(err)
         res.json({error: "Erorr fetching"});
@@ -82,11 +88,13 @@ router.get('/',function(req, res)
             for(let url in res){
 
                 Jimp.read(res[url].url).then(function (lenna) {
-                    lenna.resize(500, 500)             //resize
-                        .quality(100)                 //compress quality
-                          .greyscale()                 //black and white
-                        .write("public//images/"+txt[1]+ "_" + count+".jpg");   // save images
-                    count++ ;
+                    lenna.resize(500, 500)            
+                        .quality(100)                 
+                          .greyscale()                 
+                        .write("public//images/"+txt[1]+ "_" + count+".jpg"); 
+                        
+                        count++ ;
+                        console.log(count+" image downloaded");
                     }).catch(function (err) {
                     console.error(err);
                   });
@@ -100,8 +108,8 @@ router.get('/',function(req, res)
 });
 
 router.post('/',function(req, res){
-    console.log('Ab aa rha h ');        //just a check-point:-)             
-    mongoose.model('img').findOne({'user_id': 'user'},function(err,resource){	
+    console.log('Ab aa rha ');
+    mongoose.model('img').findOne({'user_id': 'mohit'},function(err,resource){
 
         if(err)
         res.json({error: "Erorr fetching"});
@@ -112,6 +120,7 @@ router.post('/',function(req, res){
 
 
 });
+
 
 
 
