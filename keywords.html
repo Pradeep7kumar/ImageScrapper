@@ -26,13 +26,16 @@
           
         </div>
       </div>
-      
+      <span ng-show="response">{{response}}</span>
     </form>
 
 
 
     <ul id="ct" ></ul>
-    
+    <p id="demo"></p>
+
+
+
 
     <script type="text/javascript">
       
@@ -43,15 +46,13 @@
             $scope.scrapper = function(){
 
               $http({
-			  
-			  
                     method: 'post',
                     url :"http://localhost:3000/scraper?kw=",
                     params:{
                         kw:$scope.keyword
                     }
 
-     
+                    
 
                 }).then(function(response){
                     console.log(response);
@@ -59,7 +60,6 @@
                     var ul = document.getElementById("ct");
                     console.log(response.data);
                     
-                                       
                     var o;
                     var numbers = response.data.split(",");
                         console.log(numbers);
@@ -70,22 +70,31 @@
                         //var o = response.data[i];
                          o = numbers[i];
                         var temp = o;
+
                         var li = document.createElement("button");
+                        li.setAttribute("id", i );
+                        console.log(li.id);
+                        li.addEventListener("click", function(){
+
+                            //var b = o;
+
+                            console.log('aa nhi rha ye');
+                            console.log(this.id);
+
+                            var toto = response.data.split(",");
+                            console.log(toto[this.id]);
+                            //console.log(arguments[0].name);
+                            url = 'photos.html?name=' + encodeURIComponent(toto[this.id]);
+
+                            //document.location.href = url;
+
+                            $window.open(url);
+
+
+                        });
                         li.appendChild(document.createTextNode(o));
                         ul.appendChild(li); 
-                        li.addEventListener("click", sendData);
-
-                        function sendData() {
-                           
-                            var b = o;
-                            url = 'photos.html?name=' + encodeURIComponent(b);
-        
-                            document.location.href = url;
-        
-                            $window.open(url);
-                        }
-
-
+                      
                         
                    }
 

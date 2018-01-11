@@ -9,6 +9,11 @@ path = require('path')
 const Jimp = require("jimp");
 var mongoose = require('mongoose');
 
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('scrapper.html');
+});
+
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/testing');
