@@ -4,7 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var db = require('./model/db');
+//var db = require('./model/db');
 var schema = require('./model/schema');
 var scraper_model = require('./bin/model/scraper_model');
 var scraper = require('./routes/scraper');
@@ -12,7 +12,7 @@ var cors = require('cors');
 var mongoose = require('mongoose');
 
 
-//mongoose.connect('mongodb://mgupta133:mohit110001@ds249737.mlab.com:49737/imgdbscraper');
+mongoose.connect('mongodb://mgupta133:mohit110001@ds249737.mlab.com:49737/imgdbscraper');
 
 
 
