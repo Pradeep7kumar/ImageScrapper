@@ -123,7 +123,7 @@ router.get('/',function(req, res)
                     lenna.resize(500, 500)            
                         .quality(100)                 
                           .greyscale()                 
-                        .write("public//images/"+txt+ "_" + count+".jpg"); 
+                        .write("./images/"+txt+ "" + count+".jpg"); 
                         
                         count++ ;
                         console.log(count+" image downloaded");
@@ -140,14 +140,14 @@ router.get('/',function(req, res)
 });
 
 
-router.get('public//images/*',function(req,res){
-    var paths = req.path.substr(1);
+router.get('/images/*',function(req,res){
+    var paths = req.path.toString().substr(1);
     console.log(paths);
-    fs.readFile(paths, function (err, data) {
-        if (err) throw err; // Fail if the file can't be read.
-        else {
-            res.writeHead(200, {'Content-Type': 'image/jpg'});
-            res.end(data);// Send the file data to the browser.
+    //fs.readFile(paths, function (err, data) {
+    //    if (err) throw err; // Fail if the file can't be read.
+    //    else {
+     //       res.writeHead(200, {'Content-Type': 'image/jpg'});
+     //       res.end(data);// Send the file data to the browser.
 
         }
     });
