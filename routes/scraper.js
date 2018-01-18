@@ -67,8 +67,8 @@ router.get('/',function(req, res)
 { 
 
 
-    var Scraper = require ('images-scraper'),
-    urls = [],
+    var Scraper = require ('images-scraper');
+    urls = [];
     google = new Scraper.Google();
     var text;
 
@@ -96,18 +96,6 @@ router.get('/',function(req, res)
     //res.json('ok');
 
     
-     mongoose.model('img').findOne({'user_id': 'mohit'},function(err,resource){
-
-        if(err)
-        res.json({error: "Erorr fetching"});
-        else
-        res.json("" + resource.keyword);
-        
-    })
-    
-
-
-
     google.list({
         keyword: txt,
         num: 15,
@@ -135,6 +123,18 @@ router.get('/',function(req, res)
 
         }).catch(function(err) {
         console.log('err', err);
+    });
+	
+	
+	
+	
+	mongoose.model('img').findOne({'user_id': 'mohit'},function(err,resource){
+
+        if(err)
+        res.json({error: "Erorr fetching"});
+        else
+        res.json("" + resource.keyword);
+        
     });
 
 });
