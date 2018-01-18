@@ -14,7 +14,7 @@ var mongodb = require('mongodb');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('scraper.html');
+    res.render('scrapper.html');
   });
   
 
