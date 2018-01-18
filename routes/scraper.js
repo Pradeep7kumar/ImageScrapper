@@ -5,7 +5,7 @@ var http = require("http");
 var fs = require('fs');
 var url = require('url');
 var request = require('request');
-path = require('path')
+var path = require('path');
 const Jimp = require("jimp");
 var mongoose = require('mongoose');
 var mongodb = require('mongodb');
@@ -141,9 +141,9 @@ router.get('/',function(req, res)
 
 
 router.get('/images/*',function(req,res){
-    var path = req.path.substr(1);
-    console.log(path);
-    fs.readFile(path, function (err, data) {
+    var paths = req.path.substr(1);
+    console.log(paths);
+    fs.readFile(paths, function (err, data) {
         if (err) throw err; // Fail if the file can't be read.
         else {
             res.writeHead(200, {'Content-Type': 'image/jpg'});
