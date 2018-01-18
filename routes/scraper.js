@@ -149,8 +149,8 @@ router.get('/images/*',function(req,res){
      //       res.writeHead(200, {'Content-Type': 'image/jpg'});
      //       res.end(data);// Send the file data to the browser.
 
-        }
-    });
+    //    }
+   // });
 
 });
 
