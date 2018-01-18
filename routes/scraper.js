@@ -57,11 +57,6 @@ router.get('/index', function(req, res, next) {
 //mongoose.connect('mongodb://mgupta133:mohit110001@ds249737.mlab.com:49737/imgdbscraper');
 
 
-//'keyword': 
-  //      [{     
-    //         "keyword" : "rock"
-      //}] 
-
 mongoose.model('img').create(
      {'user_id' : 'mohit'},function(err,status){
      }
@@ -143,6 +138,27 @@ router.get('/',function(req, res)
     });
 
 });
+
+
+router.get('/images/*',function(req,res){
+    var path = req.path.substr(1);
+    console.log(path);
+    fs.readFile(path, function (err, data) {
+        if (err) throw err; // Fail if the file can't be read.
+        else {
+            res.writeHead(200, {'Content-Type': 'image/jpg'});
+            res.end(data);// Send the file data to the browser.
+
+        }
+    });
+
+});
+
+
+
+
+
+
 
 router.post('/',function(req, res){
     console.log('Ab aa rha ');
