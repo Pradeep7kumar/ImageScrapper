@@ -123,7 +123,7 @@ router.get('/',function(req, res)
                     lenna.resize(500, 500)            
                         .quality(100)                 
                           .greyscale()                 
-                        .write("./images/"+txt+ "_" + count+".jpg"); 
+                        .write("public//images/"+txt+ "_" + count+".jpg"); 
                         
                         count++ ;
                         console.log(count+" image downloaded");
@@ -140,7 +140,7 @@ router.get('/',function(req, res)
 });
 
 
-router.get('/images/*',function(req,res){
+router.get('public//images/*',function(req,res){
     var paths = req.path.substr(1);
     console.log(paths);
     fs.readFile(paths, function (err, data) {
