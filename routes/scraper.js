@@ -13,14 +13,48 @@ var mongodb = require('mongodb');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('scrapper.html');
+router.get('/index', function(req, res, next) {
+
+    fs.readFile('./views/scrapper.html',function(err, data)
+    {if(err) throw err;
+        else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+
+    });
   });
   
 
 
+  router.get('/keywords.html', function(req, res, next) {
+
+    fs.readFile('./views/keywords.html',function(err, data)
+    {if(err) throw err;
+        else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+
+    });
+  });
+
+  router.get('/photos.html', function(req, res, next) {
+
+    fs.readFile('./views/photos.html',function(err, data)
+    {if(err) throw err;
+        else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+
+    });
+  });
+
+
+
 //mongoose.connect('mongodb://127.0.0.1:27017/testing');
-mongoose.connect('mongodb://mgupta133:mohit110001@ds249737.mlab.com:49737/imgdbscraper');
+//mongoose.connect('mongodb://mgupta133:mohit110001@ds249737.mlab.com:49737/imgdbscraper');
 
 
 //'keyword': 

@@ -4,9 +4,9 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var db = require('./model/db');
+//var db = require('./model/db');
 var schema = require('./model/schema');
-//var scraper_model = require('./bin/model/scraper_model');
+var scraper_model = require('./bin/model/scraper_model');
 var scraper = require('./routes/scraper');
 var cors = require('cors');
 var mongoose = require('mongoose');
@@ -64,7 +64,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  //res.render('error');
 });
 
 module.exports = app;
