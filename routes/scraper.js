@@ -143,15 +143,15 @@ router.get('/',function(req, res)
 router.get('/images/*',function(req,res){
     var paths = req.path.toString().substr(1);
     console.log(paths);
-	res.json(paths);
-    //fs.readFile(paths, function (err, data) {
-    //    if (err) throw err; // Fail if the file can't be read.
-    //    else {
-     //       res.writeHead(200, {'Content-Type': 'image/jpg'});
-     //       res.end(data);// Send the file data to the browser.
+	//res.json(paths);
+    fs.readFile("./"+ paths, function (err, data) {
+        if (err) throw err; // Fail if the file can't be read.
+        else {
+            res.writeHead(200, {'Content-Type': 'image/jpg'});
+           res.end(data);// Send the file data to the browser.
 
-    //    }
-   // });
+        }
+    });
 
 });
 
