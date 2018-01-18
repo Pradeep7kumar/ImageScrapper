@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var ScraperSchema = new mongoose.Schema({
 
-    userid: String,
-    keyword: [{keyword: String}]
+    userid: Number,
+    keyword: []
 });
 
 mongoose.model('scraperschema',ScraperSchema);

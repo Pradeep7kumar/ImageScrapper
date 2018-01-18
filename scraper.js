@@ -1,23 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var http = require("http");
-var cheerio = require("cheerio");
+//var cheerio = require("cheerio");
 var fs = require('fs');
 var url = require('url');
 var request = require('request');
-var path = require('path');
+path = require('path')
 const Jimp = require("jimp");
 var mongoose = require('mongoose');
 var mongodb = require('mongodb');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('scrapper.html');
-});
+    res.render('scrapper.html');
+  });
+  
 
 //mongoose.connect('mongodb://127.0.0.1:27017/testing');
 mongoose.connect('mongodb://mgupta133:mohit110001@ds249737.mlab.com:49737/imgdbscraper');
-
 
 
 //'keyword': 
