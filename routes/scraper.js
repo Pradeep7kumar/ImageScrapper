@@ -86,12 +86,12 @@ router.get('/',function(req, res)
 
 
     var txt = req.query.kw;
-   console.log(txt[1]);
+   console.log(txt);
 
     
     mongoose.model('img').update({'user_id':'mohit'},{
         '$push' : {
-            'keyword' : txt[1]
+            'keyword' : txt
         }
     },function(err,x){
         console.log(err);
@@ -114,7 +114,7 @@ router.get('/',function(req, res)
 
 
     google.list({
-        keyword: txt[1],
+        keyword: txt,
         num: 15,
         detail: true,
         nightmare: {
@@ -128,7 +128,7 @@ router.get('/',function(req, res)
                     lenna.resize(500, 500)            
                         .quality(100)                 
                           .greyscale()                 
-                        .write("public//images/"+txt[1]+ "_" + count+".jpg"); 
+                        .write("public//images/"+txt+ "_" + count+".jpg"); 
                         
                         count++ ;
                         console.log(count+" image downloaded");
