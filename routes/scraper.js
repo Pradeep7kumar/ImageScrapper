@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var http = require("http");
-var cheerio = require("cheerio");
+//var cheerio = require("cheerio");
 var fs = require('fs');
 var url = require('url');
 var request = require('request');
@@ -10,6 +10,13 @@ const Jimp = require("jimp");
 var mongoose = require('mongoose');
 var mongodb = require('mongodb');
 
+
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.render('scrapper.html');
+  });
+  
 
 
 //mongoose.connect('mongodb://127.0.0.1:27017/testing');
@@ -81,7 +88,7 @@ router.get('/',function(req, res)
         }
     })
         .then(function (res) {
-            for(let url in res){
+            for(var url in res){
 
                 Jimp.read(res[url].url).then(function (lenna) {
                     lenna.resize(500, 500)            
