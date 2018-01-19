@@ -68,6 +68,7 @@ router.get('/',function(req, res)
 
 
     //var Scraper = require ('images-scraper');
+	//pkcs11
     urls = [];
     google = new Scraper.Google();
     var text;
