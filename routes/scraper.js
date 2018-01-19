@@ -9,7 +9,7 @@ var path = require('path');
 const Jimp = require("jimp");
 var mongoose = require('mongoose');
 var mongodb = require('mongodb');
-
+var Scraper = require ('images-scraper');
 
 
 /* GET home page. */
@@ -67,7 +67,7 @@ router.get('/',function(req, res)
 { 
 
 
-    var Scraper = require ('images-scraper');
+    //var Scraper = require ('images-scraper');
     urls = [];
     google = new Scraper.Google();
     var text;
