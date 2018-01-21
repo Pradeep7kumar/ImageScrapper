@@ -4,7 +4,7 @@ var router = express.Router();
 var fs = require('fs');
 const Jimp = require("jimp");
 var mongoose = require('mongoose');
-var Scraper = require ('images-scraper');
+var Scraper = require('images-scraper');
 
 
 /* GET home page. */
@@ -65,7 +65,7 @@ router.get('/',function(req, res)
     //var Scraper = require ('images-scraper');
 	//pkcs11
     var urls = [];
-    console.log(Scraper.Google());
+    console.log(new Scraper.Google());
     var google = new Scraper.Google();
     var count = 0;
     // you can also watch on events
@@ -90,6 +90,26 @@ router.get('/',function(req, res)
     console.log("google");
     console.log(google);
 	console.log(google.list);
+	console.log(Scraper);
+
+	var options = {
+        keyword: txt,
+        num: 15,
+        detail: true,
+        nightmare: {
+            show: true
+        }
+    };
+
+	google.list(options,function(err,res){
+	    console.log("hi");
+
+	    console.log(err);
+	    console.log(res);
+
+    });
+
+
     google.list({
         keyword: txt,
         num: 15,
