@@ -97,6 +97,7 @@ router.get('/',function(req, res)
     //res.json('ok');
 
     console.log("google");
+	console.log(google);
     google.list({
         keyword: txt,
         num: 15,
@@ -106,6 +107,7 @@ router.get('/',function(req, res)
         }
     })
         .then(function (res) {
+			console.log(res);
             for(var url in res){
 				console.log("x"+url);	
                 Jimp.read(res[url].url).then(function (lenna) {
@@ -123,7 +125,7 @@ router.get('/',function(req, res)
             }
 
         }).catch(function(err) {
-        console.log('err', err);
+        console.log('err');
     });
 	
 	 console.log("a google");
