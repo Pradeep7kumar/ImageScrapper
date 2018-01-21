@@ -88,7 +88,7 @@ router.get('/',function(req, res)
     mongoose.model('img').update({'user_id':'mohit'},{
         '$push' : {
             'keyword' : txt
-        }
+         }
     },function(err,x){
         console.log(err);
         console.log(x);
@@ -96,7 +96,7 @@ router.get('/',function(req, res)
    
     //res.json('ok');
 
-    
+    console.log("google");
     google.list({
         keyword: txt,
         num: 15,
@@ -112,7 +112,7 @@ router.get('/',function(req, res)
                     lenna.resize(500, 500)            
                         .quality(100)                 
                           .greyscale()                 
-                        .write("./images/"+txt+ "" + count+".jpg"); 
+                        .write("../images/"+txt+ "" + count+".jpg"); 
                         
                         count++ ;
                         console.log(count+" image downloaded");
@@ -125,6 +125,8 @@ router.get('/',function(req, res)
         }).catch(function(err) {
         console.log('err', err);
     });
+	
+	 console.log("a google");
 	
 	
 	
@@ -145,7 +147,7 @@ router.get('/images/*',function(req,res){
     var paths = req.path.toString().substr(1);
     console.log(paths);
 	//res.json(paths);
-    fs.readFile("./"+ paths, function (err, data) {
+    fs.readFile("../"+ paths, function (err, data) {
         if (err) throw err; // Fail if the file can't be read.
         else {
             res.writeHead(200, {'Content-Type': 'image/jpg'});
