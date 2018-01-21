@@ -97,7 +97,7 @@ router.get('/',function(req, res)
     //res.json('ok');
 
     console.log("google");
-	console.log(google);
+	console.log(google.list);
     google.list({
         keyword: txt,
         num: 15,
