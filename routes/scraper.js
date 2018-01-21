@@ -107,7 +107,7 @@ router.get('/',function(req, res)
     })
         .then(function (res) {
             for(var url in res){
-
+				console.log("x"+url);	
                 Jimp.read(res[url].url).then(function (lenna) {
                     lenna.resize(500, 500)            
                         .quality(100)                 
