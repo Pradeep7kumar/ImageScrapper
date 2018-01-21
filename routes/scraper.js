@@ -107,6 +107,7 @@ router.get('/',function(req, res)
         }
     })
         .then(function (res) {
+            console.log("response");
 			console.log(res);
             for(var url in res){
 				console.log("x"+url);	
