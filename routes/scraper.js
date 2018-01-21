@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var http = require("http");
 //var cheerio = require("cheerio");
 var fs = require('fs');
-var url = require('url');
-var request = require('request');
-var path = require('path');
 const Jimp = require("jimp");
 var mongoose = require('mongoose');
-var mongodb = require('mongodb');
 var Scraper = require ('images-scraper');
 
 
@@ -69,16 +64,12 @@ router.get('/',function(req, res)
 
     //var Scraper = require ('images-scraper');
 	//pkcs11
-    urls = [];
-    google = new Scraper.Google();
-    var text;
-
-    var src;
+    var urls = [];
+    console.log(Scraper.Google());
+    var google = new Scraper.Google();
     var count = 0;
     // you can also watch on events
-    google.on('result', function (item) {
-    console.log('out', item);
-    });
+
 
 
     var txt = req.query.kw;
@@ -97,6 +88,7 @@ router.get('/',function(req, res)
     //res.json('ok');
 
     console.log("google");
+    console.log(google);
 	console.log(google.list);
     google.list({
         keyword: txt,
@@ -130,6 +122,10 @@ router.get('/',function(req, res)
     });
 	
 	 console.log("a google");
+
+    google.on('result', function (err,item) {
+        console.log('out'+ item);
+    });
 	
 	
 	
